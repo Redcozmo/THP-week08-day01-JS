@@ -20,3 +20,8 @@ function multiply(a, b){
 function divide(a, b){
   return a / b;
 }
+
+// Fonction d'affichage dans la console
+function displayConsole() {
+
+}

@@ -1,3 +1,20 @@
 span {
   color: red;
 }
+
+.calc {
+  display: flex;
+  flex-direction: row.
+}
+
+.numbers {
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.console {
+  width: 200px;
+  border: 2px solid black;
+}
