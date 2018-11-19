@@ -3,40 +3,56 @@
 
 // Somme
 function add(a, b){
-  return a + b;
+  return parseInt(a) + parseInt(b);
 }
 
 // Soustraction
 function substract(a, b){
-  return a - b;
+  return parseInt(a) - parseInt(b);
 }
 
 // Multiplication
 function multiply(a, b){
-  return a * b;
+  return parseInt(a) * parseInt(b);
 }
 
 // Division
 function divide(a, b){
-  return a / b;
+  return parseInt(a) / parseInt(b);
 }
 
 // Fonction d'affichage dans la console
 consoleText = Array();
 function displayConsole(num) {
+  document.getElementById("console").innerHTML = '';
   consoleText.push(num.toString());
-  document.getElementById("console").innerHTML = consoleText;
-  console.log(consoleText);
+  document.getElementById("console").innerHTML = consoleText.join('');
+  console.log(num);
+  return consoleText;
 }
 
-function clear() {
-  consoleText = Array();
-  document.getElementById("console").innerHTML = consoleText;
-  return consoleText
+// Fonction qui efface la console
+function clear(){
+  console.log('dans la fonction clear');
+  document.getElementById("console").innerHTML = '';
+  document.getElementById("result").innerHTML = '';
 }
 
+// Fonction qui calcul et affiche le resultat
 function getResult(){
-  
+  let calcul = document.getElementById("console").innerHTML
+  if (consoleText[1] == '+') {
+    document.getElementById("result").innerHTML = add(consoleText[0], consoleText[2]);
+  }
+  if (consoleText[1] == '-') {
+    document.getElementById("result").innerHTML = substract(consoleText[0], consoleText[2]);
+  }
+  if (consoleText[1] == 'x') {
+    document.getElementById("result").innerHTML = multiply(consoleText[0], consoleText[2]);
+  }
+  if (consoleText[1] == '/') {
+    document.getElementById("result").innerHTML = divide(consoleText[0], consoleText[2]);
+  }
 }
 
 

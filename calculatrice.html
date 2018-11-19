@@ -39,7 +39,7 @@
         <button onclick="displayConsole(9)" type="button" id="button" value="9">9</button>
       </div>
       <div class="clear">
-        <button onclick="clear()" type="button" id="button-clear" value="C">C</button>
+        <button onclick="displayConsole('.')" type="button" id="button-clear" value="."> . </button>
       </div>
       <div>
         <button onclick="displayConsole(0)" type="button" id="button" value="0">0</button>
@@ -61,11 +61,15 @@
       <div class="divide">
         <button onclick="displayConsole('/')" type="button" id="button" value="/">/</button>
       </div>
+      <div class="clear">
+        <button onclick="clear()" type="button" id="button-clear" value="C">C</button>
+      </div>
     </div>
 
     <div class="console">
       <p>Console :</p><br>
-      <p id="console">Processing...</p>
+      <p>Calcul : <span id="console"></span></p>
+      <p>Résultat = <span id="result"></span></p>
     </div>
   </div>
 
