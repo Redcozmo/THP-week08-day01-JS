@@ -24,23 +24,23 @@ function divide(a, b){
 // Fonction d'affichage dans la console
 consoleText = Array();
 function displayConsole(num) {
-  document.getElementById("console").innerHTML = '';
   consoleText.push(num.toString());
-  document.getElementById("console").innerHTML = consoleText.join('');
+  document.getElementById("calcul").innerHTML = consoleText.join('');
   console.log(num);
   return consoleText;
 }
 
 // Fonction qui efface la console
-function clear(){
-  console.log('dans la fonction clear');
-  document.getElementById("console").innerHTML = '';
+function clearConsole(){
+  document.getElementById("calcul").innerHTML = '';
   document.getElementById("result").innerHTML = '';
+  consoleText = Array();
+  return consoleText;
 }
 
 // Fonction qui calcul et affiche le resultat
 function getResult(){
-  let calcul = document.getElementById("console").innerHTML
+  let calcul = document.getElementById("calcul").innerHTML
   if (consoleText[1] == '+') {
     document.getElementById("result").innerHTML = add(consoleText[0], consoleText[2]);
   }

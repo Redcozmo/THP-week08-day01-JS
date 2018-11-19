@@ -7,6 +7,8 @@
 </head>
 
 <body>
+  <a href="index.html"><-- previous</a>
+
   <h1>THP - Week 08 - Day 01 - Calculatrice</h1>
 
   <div class="calc">
@@ -39,7 +41,7 @@
         <button onclick="displayConsole(9)" type="button" id="button" value="9">9</button>
       </div>
       <div class="clear">
-        <button onclick="displayConsole('.')" type="button" id="button-clear" value="."> . </button>
+        <button onclick="displayConsole('.')" type="button" id="button" value="."> . </button>
       </div>
       <div>
         <button onclick="displayConsole(0)" type="button" id="button" value="0">0</button>
@@ -62,13 +64,13 @@
         <button onclick="displayConsole('/')" type="button" id="button" value="/">/</button>
       </div>
       <div class="clear">
-        <button onclick="clear()" type="button" id="button-clear" value="C">C</button>
+        <button onclick="clearConsole()" type="button" id="button" value="C">C</button>
       </div>
     </div>
 
     <div class="console">
-      <p>Console :</p><br>
-      <p>Calcul : <span id="console"></span></p>
+      <p>Opération entre deux chiffres entiers --> OK</p>
+      <p>Calcul : <span id="calcul"></span></p>
       <p>Résultat = <span id="result"></span></p>
     </div>
   </div>

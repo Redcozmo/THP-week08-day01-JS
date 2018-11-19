@@ -15,6 +15,11 @@ span {
 }
 
 .console {
-  width: 200px;
+  width: 300px;
   border: 2px solid black;
+}
+
+#button {
+  width: 50px;
+  height: 50px;
 }
