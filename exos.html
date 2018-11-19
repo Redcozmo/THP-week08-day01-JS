@@ -4,22 +4,35 @@
 <head>
   <meta charset="utf-8">
   <link href="style.css" rel="stylesheet" type="text/css">
-  <title>JS</title>
 </head>
 
 <body>
   <h1>THP - Week 08 - Day 01 - Petit exercice de chauffe</h1>
 
   <h2>Calcul du maximum</h2>
+  </form>
+  <form action="" method="get" class="button">
+    <label for="liste nombre">Liste des nombres: </label>
+    <input type="text" name="name" id="name" required>
+    <input type="button" id="myBtn" onclick="showResultInHTML("values", "max_value", values, maxValue)" value="Try it">
+  </form>
+
   <p>Le maximum parmis les valeurs <span id="values">Valeurs</span> est : <span id="max_value">max</span></p>
 
   <h2>Calcul du nombre de voyelles</h2>
+
+  <form action="" method="get" class="button">
+    <label for="liste nombre">Mot: </label>
+    <input type="text" name="name" id="name" required>
+    <input type="button" id="myBtn" onclick="showResultInHTML("values", "max_value", values, maxValue)" value="Try it">
+  </form>
+
   <p>Le nombre de voyelle de <span id="stringExample1">chaine</span> est : <span id="stringExample_nb">nombre</span></p>
 
   <h2>Inverse d'une chaine de caractère</h2>
   <p>La chaine de caractère <span id="stringExample2">chaine</span> inversée devient : <span id="string_reversed">chaine</span></p>
 
-  <script src="script.js"></script>
+  <script src="exos.js"></script>
 
 </body>
 
