@@ -12,53 +12,60 @@
   <div class="calc">
     <div class="numbers">
       <div>
-        <button type="button" name="button">1</button>
+        <button onclick="displayConsole(1)" type="button" id="button" value="1">1</button>
       </div>
       <div>
-        <button type="button" name="button">2</button>
+        <button onclick="displayConsole(2)" type="button" id="button" value="2">2</button>
       </div>
       <div>
-        <button type="button" name="button">3</button>
+        <button onclick="displayConsole(3)" type="button" id="button" value="3">3</button>
       </div>
       <div>
-        <button type="button" name="button">4</button>
+        <button onclick="displayConsole(4)" type="button" id="button" value="4">4</button>
       </div>
       <div>
-        <button type="button" name="button">5</button>
+        <button onclick="displayConsole(5)" type="button" id="button" value="5">5</button>
       </div>
       <div>
-        <button type="button" name="button">6</button>
+        <button onclick="displayConsole(6)" type="button" id="button" value="6">6</button>
       </div>
       <div>
-        <button type="button" name="button">7</button>
+        <button onclick="displayConsole(7)" type="button" id="button" value="7">7</button>
       </div>
       <div>
-        <button type="button" name="button">8</button>
+        <button onclick="displayConsole(8)" type="button" id="button" value="8">8</button>
       </div>
       <div>
-        <button type="button" name="button">9</button>
+        <button onclick="displayConsole(9)" type="button" id="button" value="9">9</button>
+      </div>
+      <div class="clear">
+        <button onclick="clear()" type="button" id="button-clear" value="C">C</button>
+      </div>
+      <div>
+        <button onclick="displayConsole(0)" type="button" id="button" value="0">0</button>
+      </div>
+      <div>
+        <button onclick="getResult()" type="button" id="button" value="=">=</button>
       </div>
     </div>
     <div class="operators">
       <div class="plus">
-        <button type="button" name="button">+</button>
+        <button onclick="displayConsole('+')" type="button" id="button" value="+">+</button>
       </div>
       <div class="minus">
-        <button type="button" name="button">-</button>
+        <button onclick="displayConsole('-')" type="button" id="button" value="-">-</button>
       </div>
       <div class="multiply">
-        <button type="button" name="button">x</button>
+        <button onclick="displayConsole('x')" type="button" id="button" value="x">x</button>
       </div>
       <div class="divide">
-        <button type="button" name="button">/</button>
-      </div>
-      <div class="clear">
-        <button type="button" name="button">C</button>
+        <button onclick="displayConsole('/')" type="button" id="button" value="/">/</button>
       </div>
     </div>
 
     <div class="console">
-
+      <p>Console :</p><br>
+      <p id="console">Processing...</p>
     </div>
   </div>
 

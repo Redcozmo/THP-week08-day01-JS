@@ -22,6 +22,28 @@ function divide(a, b){
 }
 
 // Fonction d'affichage dans la console
-function displayConsole() {
-
+consoleText = Array();
+function displayConsole(num) {
+  consoleText.push(num.toString());
+  document.getElementById("console").innerHTML = consoleText;
+  console.log(consoleText);
 }
+
+function clear() {
+  consoleText = Array();
+  document.getElementById("console").innerHTML = consoleText;
+  return consoleText
+}
+
+function getResult(){
+  
+}
+
+
+// //get a reference to the element
+// let myBtn = document.getElementById('button');
+//
+// //add event listener
+// document.addEventListener('click', function(event) {
+//   document.getElementById("console").innerHTML = event.value;
+// });
