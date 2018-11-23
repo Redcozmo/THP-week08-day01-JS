@@ -68,17 +68,21 @@ function clearConsole(){
 
 // Fonction qui calcul et affiche le resultat
 function getResult(){
-  if (consoleText[1] == '+') {
-    document.getElementById("result").innerHTML = add(consoleText[0], consoleText[2]);
+  consoleTextSplit = consoleText.join('').split(/\D/); // spération des nombres
+  num_1 = consoleTextSplit[0];
+  num_2 = consoleTextSplit[1];
+  operateur = consoleText[consoleText.join('').search(/\D/)];
+  if (operateur == '+') {
+    document.getElementById("result").innerHTML = add(num_1, num_2);
   }
-  if (consoleText[1] == '-') {
-    document.getElementById("result").innerHTML = substract(consoleText[0], consoleText[2]);
+  if (operateur == '-') {
+    document.getElementById("result").innerHTML = substract(num_1, num_2);
   }
-  if (consoleText[1] == 'x') {
-    document.getElementById("result").innerHTML = multiply(consoleText[0], consoleText[2]);
+  if (operateur == 'x') {
+    document.getElementById("result").innerHTML = multiply(num_1, num_2);
   }
-  if (consoleText[1] == '/') {
-    document.getElementById("result").innerHTML = divide(consoleText[0], consoleText[2]);
+  if (operateur == '/') {
+    document.getElementById("result").innerHTML = divide(num_1, num_2);
   }
 }
 
