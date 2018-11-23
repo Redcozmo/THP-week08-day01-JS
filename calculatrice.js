@@ -21,12 +21,39 @@ function divide(a, b){
   return parseInt(a) / parseInt(b);
 }
 
+
+// Fonction qui gère les entrées utilisateurs
+function analyse(entreeUser, consoleText) {
+  let erreur = "";
+  console.log('entree = "' + entreeUser + '" est un ' + typeof(entreeUser));
+  // test si entrée est un opérateur
+  if (entreeUser.toString().match(/\d/) == null) {
+    console.log('entrée utilisateur est un opérateur');
+    // test si pas un opérateur comme première entrée
+    if (consoleText.length == 0) {
+      console.log('consoleText est vide');
+      erreur = "First entry need to be a number. Please enter a number";
+    }
+    // test si pas deux opérateurs de suite
+    else if (consoleText[consoleText.length-1].toString().match(/\d/) == null) {
+      console.log('deux opérateurs consécutifs');
+      erreur = "Could not have two consecutive operators. Please enter a number";
+    }
+  }
+  return erreur;
+}
+
 // Fonction d'affichage dans la console
 consoleText = Array();
-function displayConsole(num) {
-  consoleText.push(num.toString());
-  document.getElementById("calcul").innerHTML = consoleText.join('');
-  console.log(num);
+function displayConsole(entreeUser) {
+  let erreur = "";
+  erreur = analyse(entreeUser, consoleText);
+  if (!erreur) {
+    consoleText.push(entreeUser.toString());
+    document.getElementById("calcul").innerHTML = consoleText.join('');
+    console.log(entreeUser);
+  }
+  document.getElementById("erreur").innerHTML = erreur;
   return consoleText;
 }
 
@@ -34,13 +61,13 @@ function displayConsole(num) {
 function clearConsole(){
   document.getElementById("calcul").innerHTML = '';
   document.getElementById("result").innerHTML = '';
+  document.getElementById("erreur").innerHTML = '';
   consoleText = Array();
   return consoleText;
 }
 
 // Fonction qui calcul et affiche le resultat
 function getResult(){
-  let calcul = document.getElementById("calcul").innerHTML
   if (consoleText[1] == '+') {
     document.getElementById("result").innerHTML = add(consoleText[0], consoleText[2]);
   }
