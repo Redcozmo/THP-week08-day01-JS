@@ -50,6 +50,7 @@ function displayConsole(entreeUser) {
   erreur = analyse(entreeUser, consoleText);
   if (!erreur) {
     consoleText.push(entreeUser.toString());
+    numbers = consoleText.join('').split(/\D/);
     document.getElementById("calcul").innerHTML = consoleText.join('');
     console.log(entreeUser);
   }
@@ -66,11 +67,31 @@ function clearConsole(){
   return consoleText;
 }
 
+// Fonction qui organise consoleText
+function organize(consoleText) {
+  // tab des nombres
+  if (consoleText[consoleText.length -1].toString().match(/\D/) == null) {
+    numbers.splice(numbers.length-1,1);
+  }
+  // tab des opérateurs
+    operators = Array.from(consoleText.join('').split(/\d/).join(''));
+  consoleText = [];
+// concaténation
+  for (var i = 0; i < numbers.length; i++) {
+    consoleText.push(numbers[i]);
+    if (operators[i] != null) {
+      consoleText.push(operators[i]);
+    }
+  }
+  return consoleText;
+}
+
+
 // Fonction qui calcul et affiche le resultat
 function getResult(){
-  consoleTextSplit = consoleText.join('').split(/\D/); // spération des nombres
-  num_1 = consoleTextSplit[0];
-  num_2 = consoleTextSplit[1];
+  numbers = consoleText.join('').split(/\D/); // spération des nombres
+  num_1 = numbers[0];
+  num_2 = numbers[1];
   operateur = consoleText[consoleText.join('').search(/\D/)];
   if (operateur == '+') {
     document.getElementById("result").innerHTML = add(num_1, num_2);
