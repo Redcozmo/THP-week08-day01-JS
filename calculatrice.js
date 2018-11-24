@@ -2,30 +2,26 @@
 // JavaScript
 
 // Somme
-function add(a, b){
-  return parseInt(a) + parseInt(b);
-}
+function add(a, b){ return parseFloat(a) + parseFloat(b); }
 
 // Soustraction
-function substract(a, b){
-  return parseInt(a) - parseInt(b);
-}
+function substract(a, b){ return parseFloat(a) - parseFloat(b); }
 
 // Multiplication
-function multiply(a, b){
-  return parseInt(a) * parseInt(b);
-}
+function multiply(a, b){ return parseFloat(a) * parseFloat(b); }
 
 // Division
-function divide(a, b){
-  return parseInt(a) / parseInt(b);
-}
+function divide(a, b){ return parseFloat(a) / parseFloat(b); }
 
 
 // Fonction qui gère les entrées utilisateurs et renvoi le message d'erreur
 function analyse(entreeUser, consoleText) {
   let erreur = "";
-  console.log('entree = "' + entreeUser + '" est un ' + typeof(entreeUser));
+  if (consoleText == undefined) {
+    console.log('consoleText est vide');
+    erreur = "Please enter an operation";
+    return;
+  }
   // test si entrée est un opérateur
   if (entreeUser.toString().match(/\d/) == null) {
     console.log('entrée utilisateur est un opérateur');
@@ -47,6 +43,11 @@ function analyse(entreeUser, consoleText) {
 consoleText = Array();
 function displayConsole(entreeUser) {
   let erreur = "";
+  if (consoleText == undefined) {
+    console.log('consoleText est vide');
+    erreur = "Please enter an operation";
+    return;
+  }
   erreur = analyse(entreeUser, consoleText);
   if (!erreur) {
     consoleText.push(entreeUser.toString());
@@ -69,35 +70,46 @@ function clearConsole(){
 
 // Fonction qui organise consoleText
 function organize(consoleText) {
-  // tab des nombres
-  numbers = consoleText.join('').split(/\D/);
-  if (consoleText[consoleText.length -1].toString().match(/\D/) != null) {
-    numbers.splice(numbers.length-1,1); // supprime le "" à la fin quand présent
+  if (consoleText == undefined) { return; }
+  if (consoleText.length == 0) {
+    console.log('consoleText est vide');
+    erreur = "Please enter an operation";
+    document.getElementById("erreur").innerHTML = erreur;
   }
-  console.log('numbers : ' + numbers);
-  // tab des opérateurs
-  operators = Array.from(consoleText.join('').split(/\d/).join(''));
-  console.log('operators : ' + operators);
-  consoleText = [];
-  // concaténation
-  for (var i = 0; i < numbers.length; i++) {
-    consoleText.push(numbers[i]);
-    if (operators[i] != null) {
-      consoleText.push(operators[i]);
+  else {
+    // tab des nombres
+    numbers = consoleText.join('').split(/[^0-9.]/g);
+    if (consoleText[consoleText.length -1].toString().match(/\D/) != null) {
+      numbers.splice(numbers.length-1,1); // supprime le "" à la fin quand présent
     }
+    console.log('numbers : ' + numbers);
+    // tab des opérateurs
+    operators = Array.from(consoleText.join('').split(/[0-9.]/g).join(''));
+    console.log('operators : ' + operators);
+    consoleText = [];
+    // concaténation
+    for (var i = 0; i < numbers.length; i++) {
+      consoleText.push(numbers[i]);
+      if (operators[i] != null) {
+        consoleText.push(operators[i]);
+      }
+    }
+    return consoleText;
   }
-  return consoleText;
 }
 
 
 // Fonction qui calcul et affiche le resultat
 function getResult(){
   consoleText = organize(consoleText);
-  console.log('ligne à calculer : ' + consoleText);
+  console.log('operations : ' + consoleText);
   let result = 0;
+  if (consoleText == undefined) { result = ''; return;}
+  if (consoleText.length == 1) { result = consoleText[0]; }
   for (var i = 0; i < consoleText.length - 1; i += 2) {
     console.log('i=' + i);
     if (i == 0) {
+      console.log('if');
       num_1 = consoleText[i];
       operator = consoleText[i + 1];
       num_2 = consoleText[i + 2];
@@ -112,7 +124,6 @@ function getResult(){
     if (operator == '-') { result = substract(num_1, num_2); }
     if (operator == 'x') { result = multiply(num_1, num_2); }
     if (operator == '/') { result = divide(num_1, num_2); }
-    console.log(result);
   }
   document.getElementById("result").innerHTML = result.toString();
 }
