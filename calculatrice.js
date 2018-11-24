@@ -22,7 +22,7 @@ function divide(a, b){
 }
 
 
-// Fonction qui gère les entrées utilisateurs
+// Fonction qui gère les entrées utilisateurs et renvoi le message d'erreur
 function analyse(entreeUser, consoleText) {
   let erreur = "";
   console.log('entree = "' + entreeUser + '" est un ' + typeof(entreeUser));
@@ -70,13 +70,16 @@ function clearConsole(){
 // Fonction qui organise consoleText
 function organize(consoleText) {
   // tab des nombres
-  if (consoleText[consoleText.length -1].toString().match(/\D/) == null) {
-    numbers.splice(numbers.length-1,1);
+  numbers = consoleText.join('').split(/\D/);
+  if (consoleText[consoleText.length -1].toString().match(/\D/) != null) {
+    numbers.splice(numbers.length-1,1); // supprime le "" à la fin quand présent
   }
+  console.log('numbers : ' + numbers);
   // tab des opérateurs
-    operators = Array.from(consoleText.join('').split(/\d/).join(''));
+  operators = Array.from(consoleText.join('').split(/\d/).join(''));
+  console.log('operators : ' + operators);
   consoleText = [];
-// concaténation
+  // concaténation
   for (var i = 0; i < numbers.length; i++) {
     consoleText.push(numbers[i]);
     if (operators[i] != null) {
@@ -89,23 +92,31 @@ function organize(consoleText) {
 
 // Fonction qui calcul et affiche le resultat
 function getResult(){
-  numbers = consoleText.join('').split(/\D/); // spération des nombres
-  num_1 = numbers[0];
-  num_2 = numbers[1];
-  operateur = consoleText[consoleText.join('').search(/\D/)];
-  if (operateur == '+') {
-    document.getElementById("result").innerHTML = add(num_1, num_2);
+  consoleText = organize(consoleText);
+  console.log('ligne à calculer : ' + consoleText);
+  let result = 0;
+  for (var i = 0; i < consoleText.length - 1; i += 2) {
+    console.log('i=' + i);
+    if (i == 0) {
+      num_1 = consoleText[i];
+      operator = consoleText[i + 1];
+      num_2 = consoleText[i + 2];
+      i += 1;
+    }
+    else {
+      num_1 = result;
+      operator = consoleText[i];
+      num_2 = consoleText[i + 1];
+    }
+    if (operator == '+') { result = add(num_1, num_2); }
+    if (operator == '-') { result = substract(num_1, num_2); }
+    if (operator == 'x') { result = multiply(num_1, num_2); }
+    if (operator == '/') { result = divide(num_1, num_2); }
+    console.log(result);
   }
-  if (operateur == '-') {
-    document.getElementById("result").innerHTML = substract(num_1, num_2);
-  }
-  if (operateur == 'x') {
-    document.getElementById("result").innerHTML = multiply(num_1, num_2);
-  }
-  if (operateur == '/') {
-    document.getElementById("result").innerHTML = divide(num_1, num_2);
-  }
+  document.getElementById("result").innerHTML = result.toString();
 }
+
 
 
 // //get a reference to the element
